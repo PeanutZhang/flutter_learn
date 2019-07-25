@@ -13,12 +13,7 @@ class MyApp extends StatelessWidget{
     // TODO: implement build
     return new MaterialApp(
       title: 'my first Flutter app',
-      home: new Scaffold(
-        appBar: new AppBar(
-          title: new Text('first Flutter app'),
-        ),
-        body: new Center(child: new RandomWords()),
-      ),
+      home: new RandomWords()
     );
   }
 
