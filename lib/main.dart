@@ -13,6 +13,9 @@ class MyApp extends StatelessWidget{
     // TODO: implement build
     return new MaterialApp(
       title: 'my first Flutter app',
+      theme: new ThemeData(
+        primaryColor: Colors.purpleAccent
+      ),
       home: new RandomWords()
     );
   }
