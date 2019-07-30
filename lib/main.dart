@@ -3,8 +3,7 @@ import 'package:english_words/english_words.dart';
 
 import 'RandomWordsState.dart';
 
-
-void main() => runApp(new MyApp());
+void main() => runApp(new BasicAppbarDemo());
 
 //class MyApp extends StatelessWidget {
 //
@@ -198,9 +197,7 @@ void main() => runApp(new MyApp());
 class RandomWords extends StatefulWidget {
   @override
   createState() => new RandomWordsState();
-
 }
-
 
 /// This Widget is the main application widget.
 class MyApp extends StatelessWidget {
@@ -217,6 +214,140 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+//*********************************************
+//scaffold demo1  ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+//**********************************
+class BasicAppbarDemo extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => new BasicAppbarState();
+}
+
+
+
+ class Choice {
+   const Choice({ this.title, this.icon });
+   final String title;
+   final IconData icon;
+ }
+const List<Choice> choices = const <Choice>[
+  const Choice(title: 'Car', icon: Icons.directions_car),
+  const Choice(title: 'Bicycle', icon: Icons.directions_bike),
+  const Choice(title: 'Boat', icon: Icons.directions_boat),
+  const Choice(title: 'Bus', icon: Icons.directions_bus),
+  const Choice(title: 'Train', icon: Icons.directions_railway),
+  const Choice(title: 'Walk', icon: Icons.directions_walk),
+  const Choice(title: 'Smoke',icon: Icons.smoke_free),
+  const Choice(title: 'vpn',icon: Icons.vpn_key)
+];
+
+class BasicAppbarState extends State<BasicAppbarDemo> {
+
+  Choice _selectChoice = choices[0];
+  void _select(Choice choice){
+    setState((){
+      _selectChoice = choice;
+    });
+  }
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return new MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('basic appbar',style: TextStyle(color: Colors.red),),
+          actions: <Widget>[
+            IconButton(icon: Icon(choices[0].icon),onPressed: (){ _select(choices[0]);},),
+            IconButton(icon: Icon(choices[1].icon),onPressed: (){_select(choices[1]);},),
+            PopupMenuButton<Choice>(
+              onSelected: _select,
+              itemBuilder: (BuildContext cxt){
+                return choices.skip(2).map((Choice choice) {
+                 return PopupMenuItem<Choice>(
+                        value: choice,
+                        child: Text(choice.title),
+
+                 );
+                }).toList();
+              },
+            )
+          ],
+        ),
+        body: Padding(padding: EdgeInsets.all(16.0),child: ChoiceCard(choice: _selectChoice,),),
+
+      ),
+    );
+  }
+}
+
+class ChoiceCard extends StatelessWidget{
+
+  final Choice choice;
+
+  const ChoiceCard({Key key, this.choice }):super(key:key);
+
+  @override
+  Widget build(BuildContext context) {
+    final TextStyle textStyle = Theme.of(context).textTheme.display1;
+    return Card(
+       color: Colors.white,
+       child: Center(
+         child: Column(
+           mainAxisSize: MainAxisSize.min,
+           crossAxisAlignment: CrossAxisAlignment.center,
+           children: <Widget>[Icon(choice.icon,size: 128,color: textStyle.color,),
+                         Text(choice.title,style: textStyle,)
+            ],
+         ),
+       ),
+      elevation: 10,
+    );
+  }
+
+}
+
+//************                     ************
+//&&&&&&&&&&&&   ↑↑↑↑↑↑↑↑↑↑↑↑      ↓↓↓&&&&&&&&&&&&
+//**********************************************
+
+
+ //   ****************************
+//      *****↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓****
+//       ******  tab选项  *****
+//         **↓↓↓↓↓↓↓↓↓↓↓***
+//             ↓↓↓↓↓↓
+
+
+ class TabBarDemo extends StatefulWidget{
+    @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return TabBarDemoState();
+  }
+ }
+
+ class TabBarDemoState extends State<TabBarDemo>{
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return null;
+  }
+
+ }
+
+
+ //          ↑↑↑↑↑↑↑
+//      ↑↑↑↑↑ tabbar ↑↑↑↑
+//   ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+// **************************
+//       **↓↓↓↓↓↓↓↓↓↓↓***
+//
+//            ↓↓↓↓↓↓
+//
 
 class MyStatefulWidget extends StatefulWidget {
   MyStatefulWidget({Key key}) : super(key: key);
