@@ -3,197 +3,8 @@ import 'package:english_words/english_words.dart';
 
 import 'RandomWordsState.dart';
 
-void main() => runApp(new BottomNavigationBarDemo());
+void main() => runApp(new ListTileDemo());
 
-//class MyApp extends StatelessWidget {
-//
-//
-//  Widget _c1() {
-//    return new Center(
-//      child: new Container(
-//        constraints: BoxConstraints.expand(height: 80, width: 80),
-//        margin: const EdgeInsets.all(16),
-//        color: Colors.deepOrange,
-//        width: 64,
-//        height: 64,
-//      ),
-//    );
-//  }
-//
-//  Widget _row() {
-//    return new MaterialApp(
-//      home: new Row(
-//        children: <Widget>[
-//          Expanded(child: Text('de', textAlign: TextAlign.center,),),
-//          Expanded(child: Text('cra', textAlign: TextAlign.center,),),
-//          Expanded(child: FittedBox(
-//            fit: BoxFit.contain,
-//            child: const FlutterLogo(),
-//          ),)
-//        ],
-//      ),
-//    );
-//  }
-//
-//  Widget _column1() {
-//    return new MaterialApp(
-//      home: Column(
-//        crossAxisAlignment: CrossAxisAlignment.start,
-//        mainAxisSize: MainAxisSize.min,
-//        children: <Widget>[
-//          Text('We move under cover and we move as one'),
-//          Text('Through the night, we have one shot to live another day'),
-//          Text('We cannot let a stray gunshot give us away'),
-//          Text('We will fight up close, seize the moment and stay in it'),
-//          Text('It’s either that or meet the business end of a bayonet'),
-//          Text('The code word is ‘Rochambeau,’ dig me?'),
-//        ],
-//      ),
-//    );
-//  }
-//
-//  Widget _text() {
-//    return new MaterialApp(
-//      title: 'this title',
-//      home: new Container(
-//        padding: const EdgeInsets.only(top: 30),
-//        child: new Text(
-//          'hi xiaofei how are you   fight up close, seize the moment and stay in it'
-//          , textAlign: TextAlign.justify,
-//          overflow: TextOverflow.visible,
-//          style: TextStyle(
-//              fontWeight: FontWeight.normal, color: Colors.red, fontSize: 20),
-//        ),
-//      ),
-//    );
-//  }
-//
-//  Widget _textRich() {
-//    return new MaterialApp(
-//        home:
-//        new Center(
-//          child: const Text.rich(
-//            TextSpan(
-//                text: '  hi xf jjljljijlijljijajzijejhjtyhzajp;;;;',
-//                children: <TextSpan>[
-//                  TextSpan(text: ' beautiful ',
-//                      style: TextStyle(
-//                          fontStyle: FontStyle.italic, color: Colors.green)),
-//                  TextSpan(text: 'girl',
-//                      style: TextStyle(fontWeight: FontWeight.bold)),
-//                ],
-//                style: TextStyle(fontSize: 20, decoration: TextDecoration.none)
-//            ),
-//            textAlign: TextAlign.left,
-//            softWrap: true,
-//          ),
-//
-//        )
-//    );
-//  }
-//
-//  Widget _icon() {
-//    return new MaterialApp(
-//      home: new Container(
-//        child: Icon(
-//          Icons.add_circle,
-//          color: Colors.deepPurpleAccent,
-//          size: 60,
-//        ),
-//      ),
-//    );
-//  }
-//
-//  Widget _raiseButton() {
-//    return new Center(
-//
-//      child: Column(
-//        mainAxisSize: MainAxisSize.min,
-//        children: <Widget>[
-//          RaisedButton(onPressed: () {},
-//            child: Text('disabled button', style: TextStyle(fontSize: 20),),),
-//          const SizedBox(height: 30,),
-//          RaisedButton(onPressed: () {},
-//            child: const Text(
-//              'Enable button', style: TextStyle(fontSize: 20),),),
-//          const SizedBox(height: 30,),
-//          RaisedButton(onPressed: () {},
-//            color: Colors.deepPurpleAccent,
-//            padding: const EdgeInsets.all(0.0),
-//            child: Container(
-//              decoration: const BoxDecoration(
-//                  gradient: LinearGradient(colors: <Color>[ Color(0xFF0D47A1),
-//                  Color(0xFF1976D2),
-//                  Color(0xFF42A5F5),
-//                  ])
-//              ),
-//              padding: const EdgeInsets.all(0.0),
-//              child: const Text(
-//                'gradient button', style: TextStyle(fontSize: 20),),
-//            ),
-//          )
-//        ],
-//      ),
-//
-//    );
-//  }
-//
-//  Widget _st() {
-//    return new MaterialApp(
-//      home: _dropMenuButton(),
-//    );
-//  }
-//
-//  String itemValue = 'Zyh';
-//
-//  Widget _dropMenuButton() {
-//    return Scaffold(
-//      body: Center(
-//        child: DropdownButton<String>(
-//          items: <String>["XF", "XF", "X F"].map<DropdownMenuItem<String>>((
-//              String value) {
-//            return DropdownMenuItem<String>(
-//              value: value,
-//              child: Text(value,
-//                style: TextStyle(fontSize: 25, color: Colors.lightGreen),),
-//            );
-//          }).toList(),
-//        ),
-//      ),
-//    );
-//  }
-//
-//  var count = 1;
-//
-//  Widget _scaffold(BuildContext context) {
-//
-//  }
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    // TODO: implement build
-////    return new MaterialApp(
-////      title: 'my first Flutter app',
-////      theme: new ThemeData(
-////        primaryColor: Colors.purpleAccent
-////      ),
-////      home: new RandomWords()
-////    );
-//    return MaterialApp(home: Scaffold(
-//      appBar: AppBar(title: Text('bar'),),
-//      body: Center(child: Text('you pressed the button $count times'),),
-//      bottomNavigationBar: BottomAppBar(child: Container(height: 50,)),
-//      floatingActionButton: FloatingActionButton(onPressed: (){},
-//        tooltip: 'tooltip',
-//        child: Icon(Icons.add),
-//
-//      ),
-//      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-//    ));
-//  }
-//
-//}
-//
 class RandomWords extends StatefulWidget {
   @override
   createState() => new RandomWordsState();
@@ -419,7 +230,11 @@ class TabbedAppBar extends StatelessWidget {
         'index 0 home',
         style: optionStyle,
       ),
-      Text('index 1 business',style: optionStyle,),
+      TextField(
+        obscureText: true,
+        decoration: InputDecoration(border: OutlineInputBorder(),),
+
+      ),
       Text('index 2 School',style: optionStyle,)
      ];
 
@@ -469,6 +284,178 @@ class TabbedAppBar extends StatelessWidget {
   }
 
 //*******************************************************
+
+ class TextFieldDemo extends StatelessWidget{
+
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return MaterialApp(
+      title: 'Textfield',
+      home: TfStateWidget(),
+    );
+  }
+
+
+ }
+
+ class TfStateWidget extends StatefulWidget{
+   TfStateWidget({Key key}):super(key:key);
+
+   @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return TfState();
+  }
+
+
+ }
+
+ class TfState extends State<TfStateWidget>{
+
+   final _controller = TextEditingController();
+   void initState(){
+     _controller.addListener((){
+       final text = _controller.text.toLowerCase();
+       print(text);
+       _controller.value = _controller.value.copyWith(
+         text: text,
+         selection: TextSelection(baseOffset: text.length, extentOffset: text.length),
+         composing: TextRange.empty
+       );
+     });
+     super.initState();
+   }
+   void dispose(){
+     _controller.dispose();
+     super.dispose();
+   }
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      body: Container(
+        padding: EdgeInsets.all(6.0),
+        alignment: Alignment.center,
+        child: TextFormField(
+          controller: _controller,
+          decoration: InputDecoration(border: OutlineInputBorder()),
+        ),
+      ),
+    );
+  }
+
+ }
+
+ //**************************************
+//**************************************
+
+ class ListTileDemo extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return MaterialApp(
+      home: MyStatelessWidget(),
+      title: 'listView',
+    );
+  }
+
+ }
+
+ class CustomListItem extends StatelessWidget{
+
+  final Widget thumbnail;
+  final String title;
+  final String user;
+  final int viewCount;
+
+
+  const CustomListItem({this.thumbnail, this.title, this.user, this.viewCount});
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 5.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Expanded(flex: 2,child: thumbnail,),
+          Expanded(flex: 3,child: _VideoDescription(
+            title: title,user: user,viewCount: viewCount,
+          ),),
+          const Icon(Icons.more_vert,size: 16.0,)
+        ],
+
+      ),
+    );
+  }
+
+ }
+ class _VideoDescription extends StatelessWidget{
+   final String title;
+   final String user;
+   final int viewCount;
+   const _VideoDescription({Key key,this.title,this.user,this.viewCount}):super(key: key);
+
+
+   @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Padding(padding: EdgeInsets.fromLTRB(5.0, 0, 0, 0),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(title,style: const TextStyle(fontWeight: FontWeight.w400,fontSize: 14.0,decoration: TextDecoration.none)),
+        const Padding(padding: EdgeInsets.symmetric(vertical: 2.0)),
+        Text(user,style: const TextStyle(fontSize: 10,decoration: null),),
+        const Padding(padding: EdgeInsets.symmetric(vertical: 1.0)),
+        Text('$viewCount views',style: TextStyle(fontSize: 10),)
+      ],
+    ),
+    );
+  }
+
+ }
+
+ class MyStatelessWidget extends StatelessWidget{
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return ListView(
+      padding: const EdgeInsets.all(8.0),
+      itemExtent: 106.0,
+      children: <CustomListItem>[
+        CustomListItem(
+          user: 'Flutter',
+          viewCount: 999000,
+          thumbnail: Container(
+            decoration: const BoxDecoration(color: Colors.blue),
+          ),
+          title: 'The Flutter YouTube Channel',
+        ),
+        CustomListItem(
+          user: 'Dash',
+          viewCount: 884000,
+          thumbnail: Container(
+            decoration: const BoxDecoration(color: Colors.yellow),
+          ),
+          title: 'Announcing Flutter 1.0',
+        ),
+      ],
+    );
+  }
+
+  MyStatelessWidget({Key key}):super(key:key);
+
+ }
+
+
+
+
+
 
 
 
