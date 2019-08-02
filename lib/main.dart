@@ -4,7 +4,7 @@ import 'package:english_words/english_words.dart';
 import 'RandomWordsState.dart';
 
 
-void main() => runApp(new FlowApp());
+void main() => runApp(new MyApp());
 
 class RandomWords extends StatefulWidget {
   @override
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       title: _title,
       home: Scaffold(
         appBar: AppBar(title: const Text(_title)),
-        body: MyStatefulWidget(),
+        body: Spinner(),
       ),
     );
   }
@@ -720,5 +720,50 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     // TODO: implement shouldRepaint
     return menuAnimation!= oldDelegate.menuAnimation;
   }
+
+ }
+
+ class Spinner extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return _SpinnerState();
+  }
+
+
+
+ }
+
+ class _SpinnerState extends State<Spinner> with SingleTickerProviderStateMixin{
+
+  AnimationController _controller;
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print('initState---------');
+    _controller = AnimationController(vsync: this,duration: const Duration(seconds: 10),)..repeat();
+
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    print('dispose----');
+    _controller?.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return AnimatedBuilder(
+      animation: _controller,
+      child: Container(width: 200,height: 200,color: Colors.blue,),
+      builder: (BuildContext context,Widget child) => Transform.rotate(angle: _controller.value * 2.0 ,child: child,),
+    );
+  }
+
 
  }
