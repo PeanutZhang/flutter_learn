@@ -3,7 +3,7 @@ import 'package:english_words/english_words.dart';
 
 import 'RandomWordsState.dart';
 
-void main() => runApp(new ListTileDemo());
+void main() => runApp(new ArticleLayoutDemo());
 
 class RandomWords extends StatefulWidget {
   @override
@@ -454,7 +454,140 @@ class TabbedAppBar extends StatelessWidget {
 
 
 
+//*****************************************************************************
+//*****************************************************************************
+//********************** article ui demo **************************************
 
+ class ArticleLayoutDemo extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return MaterialApp(
+       home: Scaffold(
+         appBar: AppBar(title: Text('listview'),),
+         body: ListViewWidget(),
+       ),
+    );
+  }
+
+ }
+
+ class _ArticleDescription extends StatelessWidget{
+
+  final String title;
+  final String subtitle;
+  final String author;
+  final String puishedDate;
+  final String readDuration;
+
+
+  _ArticleDescription({Key key,this.title, this.subtitle, this.author, this.puishedDate,
+      this.readDuration}):super(key:key);
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+       Expanded(flex: 2,
+           child: Column(
+             crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text('$title',
+                 maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+                const Padding(padding: EdgeInsets.only(bottom: 2.0)),
+                Text(
+                  '$subtitle',
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(fontSize: 12.0,color: Colors.black54),
+                )
+              ],
+           )),
+        Expanded(
+            flex: 1,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text('$author',maxLines: 2,overflow: TextOverflow.ellipsis,style: const TextStyle(fontWeight:  FontWeight.bold),),
+                const Padding(padding: EdgeInsets.only(bottom: 2.0)),
+                Text('$puishedDate · $readDuration ★ ',style: TextStyle(color: Colors.black54,fontSize: 12.0),)
+              ],
+            ))
+      ],
+    );
+  }
+
+ }
+
+ class ArticleItem extends StatelessWidget{
+  final Widget thumnial;
+  final String title;
+  final String subtitle;
+  final String author;
+  final String puishedDate;
+  final String readDuration;
+
+
+  ArticleItem({Key key,this.thumnial, this.title, this.subtitle, this.author,
+      this.puishedDate, this.readDuration}):super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Padding(padding: EdgeInsets.symmetric(vertical: 10.0),
+        child: SizedBox(
+          height: 120,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              AspectRatio(aspectRatio: 1.0,child: thumnial,),
+              Expanded(
+                child: Padding(padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                child: _ArticleDescription(title:title, subtitle:subtitle, author:author, puishedDate:puishedDate, readDuration:readDuration),
+                ),
+              )
+            ],
+          ),
+        ),
+    );
+  }
+
+ }
+
+  class ListViewWidget extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return ListView(
+      padding: EdgeInsets.all(15.0),
+      children: <Widget>[
+        ArticleItem(
+          thumnial: Container(decoration: BoxDecoration(color: Colors.pink),),
+          title: 'Flutter 1.0 lanuch',
+          subtitle: 'Flutter continues to improve and expand its horizons.'
+              'This text should max out at two lines and clip',
+          author: 'Zyh',
+          puishedDate: 'Aug 01',
+          readDuration: '5 mins',
+        ),
+        ArticleItem(
+          thumnial: Container(decoration: BoxDecoration(color: Colors.blue),),
+          title: 'Flutter 1.2 release  continual updates to the frame work',
+          subtitle: 'Flutter once again improves and make updates',
+          author: 'Fultter',
+          puishedDate: 'Aug 01',
+          readDuration: '10 mins',
+        )
+      ],
+    );
+  }
+
+  }
 
 
 
