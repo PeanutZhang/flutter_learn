@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 
+import 'HomePage.dart';
 import 'RandomWordsState.dart';
+import 'SignUpPage.dart';
 
 
 void main() => runApp(new MyApp());
@@ -19,10 +21,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: _title,
-      home: Scaffold(
-        appBar: AppBar(title: const Text(_title)),
-        body: Spinner(),
-      ),
+      initialRoute: '/',
+      routes: {
+        '/':(BuildContext c)=> HomePage(),
+        '/signup':(BuildContext c)=> SignUpPage(),
+      },
     );
   }
 }
