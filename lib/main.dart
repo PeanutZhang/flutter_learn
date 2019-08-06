@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 
+import 'AnimationDemo.dart';
 import 'BuildUIWidget.dart';
 import 'HomePage.dart';
 import 'RandomWordsState.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         '/':(BuildContext c)=> HomePage(),
         '/signup':(BuildContext c)=> SignUpPage(),
         '/buildUi':(BuildContext c)=> BuildUIWidget(),
+        '/anidemo':(BuildContext c)=> AnimationDemo(),
       },
     );
   }

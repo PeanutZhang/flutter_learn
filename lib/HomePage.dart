@@ -57,7 +57,7 @@ class HomePage extends StatelessWidget{
           }),
           buttonColumn(Icons.near_me, 'Route',(){Navigator.of(context).pushNamed('/signup');
           }),
-          buttonColumn(Icons.share, 'Share',(){})
+          buttonColumn(Icons.forward, 'Animation',(){Navigator.of(context).pushNamed('/anidemo');})
         ],
       ),
     );
