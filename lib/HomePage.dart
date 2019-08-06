@@ -23,19 +23,12 @@ class HomePage extends StatelessWidget{
             ],
           )
           ),
-          Icon(Icons.star,size: 32,color: Colors.red,),
-          MaterialButton(
-           padding: EdgeInsets.only(left: 8),
-            child: Text('55'),
-            onPressed: (){
-             Navigator.of(context).pushNamed('/signup');
-            },
-          )
+         _MyFavoriteWidget()
         ],
       ),
     );
 
-    Column buttonColumn(IconData icon,String lable){
+    Column buttonColumn(IconData icon,String lable,VoidCallback callback){
 
       Color color = Theme.of(context).primaryColor;
       return Column(
@@ -45,11 +38,11 @@ class HomePage extends StatelessWidget{
           Icon(icon,color: color,),
           Container(
             margin: EdgeInsets.only(top: 8.0),
-            child: Text(lable,
-            style: TextStyle(fontSize: 12,
+            child: MaterialButton(onPressed: callback,child:Text(lable,
+            style: TextStyle(fontSize: 24,
             fontWeight: FontWeight.w400,
             color: color),
-            ),
+            ),)
           )
         ],
       );
@@ -59,9 +52,12 @@ class HomePage extends StatelessWidget{
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          buttonColumn(Icons.call, 'Call'),
-          buttonColumn(Icons.near_me, 'Route'),
-          buttonColumn(Icons.share, 'Share')
+          buttonColumn(Icons.call, 'Call',(){
+          Navigator.of(context).pushNamed('/buildUi');
+          }),
+          buttonColumn(Icons.near_me, 'Route',(){Navigator.of(context).pushNamed('/signup');
+          }),
+          buttonColumn(Icons.share, 'Share',(){})
         ],
       ),
     );
@@ -89,6 +85,53 @@ class HomePage extends StatelessWidget{
           ],
         ),
       ),
+    );
+  }
+
+}
+
+class _MyFavoriteWidget extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return _MyFavoriteWidgetState();
+  }
+
+}
+
+class _MyFavoriteWidgetState extends State<_MyFavoriteWidget>{
+  bool _isFavorite = true;
+  int  _favoriteCount = 41;
+
+  void _toggleFavorite(){
+
+    setState(() {
+
+      if(_isFavorite){
+         _favoriteCount -=1;
+      }else{
+        _favoriteCount += 1;
+      }
+      _isFavorite = !_isFavorite;
+    });
+
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Container(
+          padding: EdgeInsets.all(18.0),
+          child: IconButton(icon: Icon(_isFavorite ? Icons.star : Icons.star_border,color: Colors.red,), onPressed: _toggleFavorite),
+        ),
+        SizedBox(
+          width: 18.0,
+          child: Container(child: Text('$_favoriteCount'),),
+        )
+      ],
     );
   }
 

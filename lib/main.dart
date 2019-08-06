@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 
+import 'BuildUIWidget.dart';
 import 'HomePage.dart';
 import 'RandomWordsState.dart';
 import 'SignUpPage.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/':(BuildContext c)=> HomePage(),
         '/signup':(BuildContext c)=> SignUpPage(),
+        '/buildUi':(BuildContext c)=> BuildUIWidget(),
       },
     );
   }
