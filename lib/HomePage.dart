@@ -82,6 +82,11 @@ class HomePage extends StatelessWidget{
             titlelayout,
             buttonSection,
             textSection,
+            Column(
+              children: <Widget>[
+                MaterialButton(child: Text('Async Demo request internet'),onPressed: (){Navigator.of(context).pushNamed('/asyncdemo');},color: Colors.blue,elevation: 5.0,)
+              ],
+            )
           ],
         ),
       ),

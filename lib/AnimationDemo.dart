@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
+import 'PinterDemmo.dart';
+
 class AnimationDemo extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return null;
+    return MaterialApp(
+      home: PinterDemmo(),
+    );
   }
 
 }
