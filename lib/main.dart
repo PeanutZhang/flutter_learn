@@ -3,6 +3,7 @@ import 'package:english_words/english_words.dart';
 
 import 'AsyncDemo.dart';
 import 'BuildUIWidget.dart';
+import 'ChatDemo.dart';
 import 'HomePage.dart';
 import 'RandomWordsState.dart';
 import 'SignUpPage.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         '/signup':(BuildContext c)=> SignUpPage(),
         '/buildUi':(BuildContext c)=> BuildUIWidget(),
         '/asyncdemo':(BuildContext c) => AsyncDemo(),
+        '/chat':(BuildContext c)=>ChatDemo(),
       },
     );
   }

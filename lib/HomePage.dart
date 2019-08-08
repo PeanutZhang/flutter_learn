@@ -84,7 +84,9 @@ class HomePage extends StatelessWidget{
             textSection,
             Column(
               children: <Widget>[
-                MaterialButton(child: Text('Async Demo request internet'),onPressed: (){Navigator.of(context).pushNamed('/asyncdemo');},color: Colors.blue,elevation: 5.0,)
+                MaterialButton(child: Text('Async Demo request internet'),onPressed: (){Navigator.of(context).pushNamed('/asyncdemo');},color: Colors.blue,elevation: 5.0,),
+                MaterialButton(child: Text('chat page'),onPressed: (){Navigator.of(context).pushNamed('/chat');},color: Colors.blue,elevation: 5.0,)
+
               ],
             )
           ],
