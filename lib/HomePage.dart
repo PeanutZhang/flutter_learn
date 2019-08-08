@@ -57,7 +57,8 @@ class HomePage extends StatelessWidget{
           }),
           buttonColumn(Icons.near_me, 'Route',(){Navigator.of(context).pushNamed('/signup');
           }),
-          buttonColumn(Icons.forward, 'Animation',(){Navigator.of(context).pushNamed('/anidemo');})
+          buttonColumn(Icons.forward, 'Animation',(){Navigator.of(context).pushNamed('/anidemo');}),
+
         ],
       ),
     );
@@ -84,7 +85,9 @@ class HomePage extends StatelessWidget{
             Column(
               children: <Widget>[
                 MaterialButton(child: Text('Async Demo request internet'),onPressed: (){Navigator.of(context).pushNamed('/asyncdemo');},color: Colors.blue,elevation: 5.0,),
-                MaterialButton(child: Text('picker image'),onPressed: (){Navigator.of(context).pushNamed('/pickImg');},color: Colors.blue,elevation: 5.0,)
+                MaterialButton(child: Text('picker image'),onPressed: (){Navigator.of(context).pushNamed('/pickImg');},color: Colors.blue,elevation: 5.0,),
+                MaterialButton(child: Text('chat page'),onPressed: (){Navigator.of(context).pushNamed('/chat');},color: Colors.blue,elevation: 5.0,),
+                MaterialButton(child: Text('animatedList'),onPressed: (){Navigator.of(context).pushNamed('/animatedList');},color: Colors.blue,elevation: 5.0,)
 
               ],
             ),
