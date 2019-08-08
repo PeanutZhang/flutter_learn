@@ -81,6 +81,13 @@ class HomePage extends StatelessWidget{
             ),
             titlelayout,
             buttonSection,
+            Column(
+              children: <Widget>[
+                MaterialButton(child: Text('Async Demo request internet'),onPressed: (){Navigator.of(context).pushNamed('/asyncdemo');},color: Colors.blue,elevation: 5.0,),
+                MaterialButton(child: Text('picker image'),onPressed: (){Navigator.of(context).pushNamed('/pickImg');},color: Colors.blue,elevation: 5.0,)
+
+              ],
+            ),
             textSection,
           ],
         ),

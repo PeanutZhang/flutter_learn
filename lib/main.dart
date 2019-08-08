@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 
 import 'AnimationDemo.dart';
+import 'AsyncDemo.dart';
 import 'BuildUIWidget.dart';
 import 'HomePage.dart';
+import 'PickImage.dart';
 import 'RandomWordsState.dart';
 import 'SignUpPage.dart';
 
@@ -29,6 +31,8 @@ class MyApp extends StatelessWidget {
         '/signup':(BuildContext c)=> SignUpPage(),
         '/buildUi':(BuildContext c)=> BuildUIWidget(),
         '/anidemo':(BuildContext c)=> AnimationDemo(),
+        '/asyncdemo':(BuildContext c) => AsyncDemo(),
+        '/pickImg':(BuildContext c)=> PickImage(),
       },
     );
   }
