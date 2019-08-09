@@ -6,6 +6,7 @@ import 'AnimationDemo.dart';
 import 'AsyncDemo.dart';
 import 'BuildUIWidget.dart';
 import 'ChatDemo.dart';
+import 'HeroApp.dart';
 import 'HomePage.dart';
 import 'PickImage.dart';
 import 'RandomWordsState.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
         '/pickImg':(BuildContext c)=> PickImage(),
         '/chat':(BuildContext c)=>ChatDemo(),
         '/animatedList':(BuildContext c)=> AnimatedListDemo(),
+        '/heropage':(BuildContext c)=>HeroApp(),
       },
     );
   }

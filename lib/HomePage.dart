@@ -87,7 +87,8 @@ class HomePage extends StatelessWidget{
                 MaterialButton(child: Text('Async Demo request internet'),onPressed: (){Navigator.of(context).pushNamed('/asyncdemo');},color: Colors.blue,elevation: 5.0,),
                 MaterialButton(child: Text('picker image'),onPressed: (){Navigator.of(context).pushNamed('/pickImg');},color: Colors.blue,elevation: 5.0,),
                 MaterialButton(child: Text('chat page'),onPressed: (){Navigator.of(context).pushNamed('/chat');},color: Colors.blue,elevation: 5.0,),
-                MaterialButton(child: Text('animatedList'),onPressed: (){Navigator.of(context).pushNamed('/animatedList');},color: Colors.blue,elevation: 5.0,)
+                MaterialButton(child: Text('animatedList'),onPressed: (){Navigator.of(context).pushNamed('/animatedList');},color: Colors.blue,elevation: 5.0,),
+                MaterialButton(child: Text('Hero Page'),onPressed: (){Navigator.of(context).pushNamed('/heropage');},color: Colors.blue,elevation: 5.0,)
 
               ],
             ),
