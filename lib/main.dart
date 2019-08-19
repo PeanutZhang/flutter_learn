@@ -8,6 +8,8 @@ import 'BuildUIWidget.dart';
 import 'ChatDemo.dart';
 import 'HeroApp.dart';
 import 'HomePage.dart';
+import 'ListLoadMoreDemo.dart';
+import 'MethodChannelDemo.dart';
 import 'PickImage.dart';
 import 'RandomWordsState.dart';
 import 'SignUpPage.dart';
@@ -39,6 +41,8 @@ class MyApp extends StatelessWidget {
         '/chat':(BuildContext c)=>ChatDemo(),
         '/animatedList':(BuildContext c)=> AnimatedListDemo(),
         '/heropage':(BuildContext c)=>HeroApp(),
+        '/methodchannel':(BuildContext c )=>MethodChannelDemo(),
+        '/listV':(BuildContext c)=>ListLoadMoreDemo(),
       },
     );
   }
