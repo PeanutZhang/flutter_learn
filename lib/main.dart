@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
+import 'package:flutter_app/practices/HomePageD1.dart';
 
 import 'AnimatedListDemo.dart';
 import 'AnimationDemo.dart';
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
         '/heropage':(BuildContext c)=>HeroApp(),
         '/methodchannel':(BuildContext c )=>MethodChannelDemo(),
         '/listV':(BuildContext c)=>ListLoadMoreDemo(),
+        '/listC':(BuildContext c)=>HomePageD1(),
       },
     );
   }

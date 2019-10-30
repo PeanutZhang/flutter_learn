@@ -90,7 +90,8 @@ class HomePage extends StatelessWidget{
                 MaterialButton(child: Text('animatedList'),onPressed: (){Navigator.of(context).pushNamed('/animatedList');},color: Colors.blue,elevation: 5.0,),
                 MaterialButton(child: Text('Hero Page'),onPressed: (){Navigator.of(context).pushNamed('/heropage');},color: Colors.green,elevation: 5.0,),
                 MaterialButton(child: Text('MethodChannel Page'),onPressed: (){Navigator.of(context).pushNamed('/methodchannel');},color: Colors.deepPurple,elevation: 5.0,),
-                MaterialButton(child: Text('ListView loadMore Page'),onPressed: (){Navigator.of(context).pushNamed('/listV');},color: Colors.amber,elevation: 5.0,)
+                MaterialButton(child: Text('ListView loadMore Page'),onPressed: (){Navigator.of(context).pushNamed('/listV');},color: Colors.amber,elevation: 5.0,),
+                MaterialButton(child: Text('ListView Card Page'),onPressed: (){Navigator.of(context).pushNamed('/listC');},color: Colors.amber,elevation: 5.0,)
 
               ],
             ),
