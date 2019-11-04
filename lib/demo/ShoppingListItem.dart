@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'Product.dart';
+import 'package:flutter_app/demo/Product.dart';
 
 typedef void CartChangeCallback(Product product, bool inCart);
 

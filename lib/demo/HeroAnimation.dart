@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
-import 'package:flutter_app/PhotoWidget.dart';
+import 'package:flutter_app/demo/PhotoWidget.dart';
 
 class HeroAnimation extends StatelessWidget{
 

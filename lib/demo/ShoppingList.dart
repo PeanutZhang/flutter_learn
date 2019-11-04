@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'Product.dart';
+import 'package:flutter_app/demo/Product.dart';
 
  class ShoppingList extends StatefulWidget{
 

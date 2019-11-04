@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'ChooseDetail.dart';
-import 'CollectPersonInfoPage.dart';
+import 'package:flutter_app/demo/ChooseDetail.dart';
+import 'package:flutter_app/demo/CollectPersonInfoPage.dart';
 
 class SignUpPage extends StatelessWidget{
 

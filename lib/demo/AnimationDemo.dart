@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'PinterDemmo.dart';
+import 'package:flutter_app/demo/PinterDemmo.dart';
 import 'package:flutter/animation.dart';
 
 class AnimationDemo extends StatelessWidget {
