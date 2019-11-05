@@ -34,6 +34,9 @@ dependencies:
 
   flutter_spinkit: ^4.0.0
   dio: ^3.0.3
+  shared_preferences: 0.5.3+4
+  event_bus: ^1.0.0
+  connectivity: 0.4.4
 
 dev_dependencies:
   flutter_test:
@@ -95,3 +98,8 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+  fonts:
+      - family: wxIconFont
+        fonts:
+          - asset: static/font/iconfont.ttf

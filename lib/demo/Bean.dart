@@ -2,7 +2,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 //part 'bean.g.dart';
-@JsonSerializable()
+//@JsonSerializable()
 class Bean {
 
   String name;

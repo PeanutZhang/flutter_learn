@@ -18,7 +18,7 @@ ZyhPullLoadWidget(this.itemBuilder, this.onLoadMore, this.onRefresh,
 @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return null;
+    return _ZyhPullLoadState(itemBuilder,onLoadMore,onRefresh,refreshKey,control);
   }
 
 }
@@ -96,18 +96,35 @@ class _ZyhPullLoadState extends State<ZyhPullLoadWidget>{
       return Padding(padding: EdgeInsets.all(15.0),child: Center(child: bottomWidget,),);
    }
    _buildEmpty(){
-      return Container();
+      return Container(
+        height: MediaQuery.of(context).size.height -100,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            FlatButton(
+              onPressed: (){},
+              child: Image(image: AssetImage("assetImgName"),width: 70,height: 70,),
+            ),
+            Container(child: Text("无数据",style: TextStyle(fontSize: 18.0,color: Colors.grey),),)
+          ],
+        ),
+      );
    }
 
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return null;
+    return RefreshIndicator(
+        key: refreshKey,
+        child: ListView.builder(
+            itemCount: _getListCount(),
+            physics: const AlwaysScrollableScrollPhysics(),
+            itemBuilder:(context,index)=>_getItem(index),
+            controller: _scrollController,
+        ),
+        onRefresh: onRefresh);
   }
-
-
-
 }
 
 
