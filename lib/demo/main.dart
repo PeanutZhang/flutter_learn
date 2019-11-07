@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       title: _title,
       initialRoute: '/',
       routes: {
-        '/':(BuildContext c)=> HomePage(),
+        '/':(BuildContext c)=> HomePageT(),
         '/signup':(BuildContext c)=> SignUpPage(),
         '/buildUi':(BuildContext c)=> BuildUIWidget(),
         '/anidemo':(BuildContext c)=> AnimationDemo(),

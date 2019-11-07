@@ -1,12 +1,19 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/page/welcomePage.dart';
 import 'package:flutter_app/page/homePage.dart';
 import 'package:flutter_app/practices/HomePageD1.dart';
 import 'package:flutter_app/redux/app_state.dart';
+import 'package:flutter_app/common/event/index.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
+import 'common/event/http_error_event.dart';
+import 'common/net/Code.dart';
 import 'common/style/app_style.dart';
 import 'common/utils/commonUtils.dart';
+import 'common/utils/navigatorUtil.dart';
 import 'demo/AnimatedListDemo.dart';
 import 'demo/AnimationDemo.dart';
 import 'demo/AsyncDemo.dart';
@@ -52,8 +59,9 @@ class MainApp extends StatelessWidget {
 class FlutterReduxApp extends StatelessWidget {
   final store = Store<AppState>(appReducer,
       initialState: AppState(
-        userInfo: User.empty(),
-        themeData: CommonUtils.getThemeData(AppColors.primarySwatch),
+          userInfo: User.empty(),
+          themeData: CommonUtils.getThemeData(AppColors.primarySwatch),
+          locale: Locale('zh', 'CH')
       ));
 
   FlutterReduxApp({Key: Key}) : super(key: Key);
@@ -62,20 +70,20 @@ class FlutterReduxApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return StoreProvider(store: store,
-                 child: StoreBuilder(builder: (context,store){
-                    return MaterialApp(
-                      //動態改變主題顔色
-                      theme: store.state.themeData,
-                       routes: {
-                        WelcomePage.rName:(context){
-                          return WelcomePage();
-                        },
-                         HomePage.rName:(context){
-                          return HomePage();
-                         }
-                       },
-                    );
-                 }));
+        child: StoreBuilder(builder: (context, store) {
+          return MaterialApp(
+            //動態改變主題顔色
+            theme: store.state.themeData,
+            routes: {
+              WelcomePage.rName: (context) {
+                return AppLocalizations(child:NavigatorUtil.pageContainer(WelcomePage()));
+              },
+              HomePage.rName: (context) {
+                return AppLocalizations(child: NavigatorUtil.pageContainer(HomePage()));
+              }
+            },
+          );
+        }));
   }
 }
 
@@ -88,9 +96,96 @@ class ReduxAppDemoPage extends StatelessWidget {
       builder: (context, userinfo) {
         return Text(
           userinfo.name,
-          style: Theme.of(context).textTheme.display1,
+          style: Theme
+              .of(context)
+              .textTheme
+              .display1,
         );
       },
     );
   }
 }
+
+class AppLocalizations extends StatefulWidget {
+  Widget child;
+
+  AppLocalizations({Key key, this.child}) : super (key: key);
+
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return AppLocalizationState();
+  }
+
+}
+
+class AppLocalizationState extends State<AppLocalizations> {
+
+  StreamSubscription stream;
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return StoreBuilder<AppState>(builder: (context, store) {
+      //通过storebuilder 实现多语言切换
+      return Localizations.override(context: context,
+        locale:store.state.locale,
+        child: widget.child,
+      );
+    });
+  }
+
+   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    stream = eventBus.on<HttpErrorEvent>().listen((event){
+         errorHandleFunction(event.code,event.message);
+    });
+  }
+
+  @override
+  void dispose(){
+   super.dispose();
+if(stream !=null){
+  stream.cancel();
+  stream = null;
+}
+  }
+
+  ///网络错误提醒
+  errorHandleFunction(int code, message) {
+    switch (code) {
+      case Code.NETWORK_ERROR:
+        Fluttertoast.showToast(
+            msg: CommonUtils.getLocale(context).network_error);
+        break;
+      case 401:
+        Fluttertoast.showToast(
+            msg: CommonUtils.getLocale(context).network_error_401);
+        break;
+      case 403:
+        Fluttertoast.showToast(
+            msg: CommonUtils.getLocale(context).network_error_403);
+        break;
+      case 404:
+        Fluttertoast.showToast(
+            msg: CommonUtils.getLocale(context).network_error_404);
+        break;
+      case Code.NETWORK_TIMEOUT:
+      //超时
+        Fluttertoast.showToast(
+            msg: CommonUtils.getLocale(context).network_error_timeout);
+        break;
+      default:
+        Fluttertoast.showToast(
+            msg: CommonUtils.getLocale(context).network_error_unknown +
+                " " +
+                message);
+        break;
+    }
+  }
+
+}
+
+

@@ -3,11 +3,16 @@ import 'package:flutter_app/redux/theme_redux.dart';
 import 'package:flutter_app/redux/user_redux.dart';
 import 'package:flutter/material.dart';
 
+import 'locale_redux.dart';
+//全局 的store   --》 绑定reducer 和aciton
 class AppState {
   User userInfo;
   ThemeData themeData;
 
-  AppState({this.userInfo, this.themeData});
+  //语言
+  Locale locale;
+
+  AppState({this.userInfo, this.themeData,this.locale});
 }
 
 
@@ -16,8 +21,9 @@ class AppState {
 ///自定义了 appReducer 用于创建 store
 AppState appReducer(AppState state, action) {
   return AppState(
-    ///通过 UserReducer 将 GSYState 内的 userInfo 和 action 关联在一起
+    ///通过 UserReducer 将 AppState 内的 userInfo 和 action 关联在一起
       userInfo: UserReducer(state.userInfo, action),
-      themeData: ThemeReducer(state.themeData,action)
+      themeData: ThemeReducer(state.themeData,action),
+      locale: LocaleReducer(state.locale,action),
   );
 }
