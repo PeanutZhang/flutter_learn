@@ -5,8 +5,10 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/common/localization/base_string.dart';
 import 'package:flutter_app/common/localization/default_localations.dart';
+import 'package:flutter_app/common/style/app_style.dart';
 import 'package:flutter_app/redux/app_state.dart';
 import 'package:flutter_app/redux/locale_redux.dart';
+import 'package:flutter_app/redux/theme_redux.dart';
 import 'package:redux/redux.dart';
 class CommonUtils{
 
@@ -42,6 +44,27 @@ class CommonUtils{
       }
       currentLocale = locale;
       store.dispatch(LocaleChangeAction(locale));
+  }
+
+//刷新主题
+  static pushTheme(Store store,int corlorsIndex){
+     ThemeData themeData ;
+     List colors = getThemeListColor();
+     themeData = getThemeData(colors[corlorsIndex]);
+     store.dispatch(ThemeRefreshAction(themeData));
+  }
+
+
+  static List<Color> getThemeListColor() {
+    return [
+      AppColors.primarySwatch,
+      Colors.brown,
+      Colors.blue,
+      Colors.teal,
+      Colors.amber,
+      Colors.blueGrey,
+      Colors.deepOrange,
+    ];
   }
 
 }

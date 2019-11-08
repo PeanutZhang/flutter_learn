@@ -8,8 +8,10 @@ import 'package:flutter_app/practices/HomePageD1.dart';
 import 'package:flutter_app/redux/app_state.dart';
 import 'package:flutter_app/common/event/index.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'common/event/http_error_event.dart';
+import 'common/localization/localizations_delegate.dart';
 import 'common/net/Code.dart';
 import 'common/style/app_style.dart';
 import 'common/utils/commonUtils.dart';
@@ -32,7 +34,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'model/User.dart';
 
 void main() {
-  runApp(MainApp());
+  runApp(FlutterReduxApp());
 }
 
 class MainApp extends StatelessWidget {
@@ -64,16 +66,24 @@ class FlutterReduxApp extends StatelessWidget {
           locale: Locale('zh', 'CH')
       ));
 
-  FlutterReduxApp({Key: Key}) : super(key: Key);
+  FlutterReduxApp({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return StoreProvider(store: store,
-        child: StoreBuilder(builder: (context, store) {
+    return StoreProvider(
+        store: store,
+        child: StoreBuilder<AppState>(builder: (context, store) {
           return MaterialApp(
-            //動態改變主題顔色
+            localizationsDelegates: [
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              AppLocalizationsDelegate.localizedDelegate
+            ],
+            locale: store.state.locale,
+            supportedLocales: [store.state.locale],
             theme: store.state.themeData,
+
             routes: {
               WelcomePage.rName: (context) {
                 return AppLocalizations(child:NavigatorUtil.pageContainer(WelcomePage()));
@@ -108,7 +118,6 @@ class ReduxAppDemoPage extends StatelessWidget {
 
 class AppLocalizations extends StatefulWidget {
   Widget child;
-
   AppLocalizations({Key key, this.child}) : super (key: key);
 
   @override
