@@ -71,7 +71,7 @@ class FlutterReduxApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return StoreProvider(
+    return StoreProvider<AppState>(
         store: store,
         child: StoreBuilder<AppState>(builder: (context, store) {
           return MaterialApp(
@@ -86,6 +86,7 @@ class FlutterReduxApp extends StatelessWidget {
 
             routes: {
               WelcomePage.rName: (context) {
+                store.state.platformLocale = WidgetsBinding.instance.window.locale;
                 return AppLocalizations(child:NavigatorUtil.pageContainer(WelcomePage()));
               },
               HomePage.rName: (context) {
@@ -93,7 +94,8 @@ class FlutterReduxApp extends StatelessWidget {
               }
             },
           );
-        }));
+        })
+    );
   }
 }
 

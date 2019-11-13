@@ -12,4 +12,8 @@ class NavigatorUtil {
             .copyWith(textScaleFactor: 1),
         child: widget);
   }
+
+  static void goHome(BuildContext context) {}
+
+  static void goLogin(BuildContext context) {}
 }

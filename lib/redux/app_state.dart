@@ -1,6 +1,9 @@
 import 'package:flutter_app/model/User.dart';
+import 'package:flutter_app/redux/login_redux.dart';
+import 'package:flutter_app/redux/middleware/epic_middleware.dart';
 import 'package:flutter_app/redux/theme_redux.dart';
 import 'package:flutter_app/redux/user_redux.dart';
+import 'package:redux/redux.dart';
 import 'package:flutter/material.dart';
 
 import 'locale_redux.dart';
@@ -11,6 +14,9 @@ class AppState {
 
   //语言
   Locale locale;
+
+  //默认语言
+  Locale platformLocale;
 
   AppState({this.userInfo, this.themeData,this.locale});
 }
@@ -27,3 +33,9 @@ AppState appReducer(AppState state, action) {
       locale: LocaleReducer(state.locale,action),
   );
 }
+final List<Middleware<AppState>> middleware = [
+  EpicMiddleware<AppState>(UserInfoEpic()),
+  EpicMiddleware<AppState>(LoginEpic()),
+  UserInfoMiddleware(),
+  LoginMiddleware(),
+];

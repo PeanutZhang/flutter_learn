@@ -17,7 +17,7 @@ class WelcomePage extends StatefulWidget {
 }
 
 class WelcomePageState extends State<WelcomePage> {
-  bool hadInit;
+  bool hadInit= false;
 
   @override
   void didChangeDependencies() {

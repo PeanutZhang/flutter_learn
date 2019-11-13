@@ -67,4 +67,8 @@ class CommonUtils{
     ];
   }
 
+  static void showLoadingDialog(BuildContext context) {
+
+  }
+
 }
