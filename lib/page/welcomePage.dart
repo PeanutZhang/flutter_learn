@@ -40,7 +40,7 @@ class WelcomePageState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return StoreBuilder(builder: (context, store) {
+    return StoreBuilder<AppState>(builder: (context, store) {
       return Container(
         color: AppColors.white,
         child: Stack(
@@ -54,7 +54,7 @@ class WelcomePageState extends State<WelcomePage> {
                 height: 200,
                 width: 200,
                 child: FlareActor(
-                  'sttaic/file/flare_flutter_logo_.flr',
+                  'static/file/flare_flutter_logo_.flr',
                   alignment: Alignment.topCenter,
                   fit: BoxFit.fill,
                   animation: 'Placeholder',
